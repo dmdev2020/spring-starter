@@ -26,6 +26,11 @@ public class InjectBeanPostProcessor implements BeanPostProcessor, ApplicationCo
     }
 
     @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
