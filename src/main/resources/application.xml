@@ -22,9 +22,9 @@
 
 <!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 
-    <!--    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
-    <!--        <property name="locations" value="classpath:application.properties"/>-->
-    <!--    </bean>-->
+<!--        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
+<!--            <property name="locations" value="classpath:application.properties"/>-->
+<!--        </bean>-->
 
 <!--    <constructor-arg name="args" type="java.util.List">-->
 <!--        <list>-->
