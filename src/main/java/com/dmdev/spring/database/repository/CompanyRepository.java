@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 @Transaction
 @Auditing
 public class CompanyRepository implements CrudRepository<Integer, Company> {
