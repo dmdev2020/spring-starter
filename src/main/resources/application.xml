@@ -18,7 +18,7 @@
         <context:include-filter type="regex" expression="com\..+Repository"/>
     </context:component-scan>
 
-    <context:property-placeholder location="classpath:application.properties"/>
+<!--    <context:property-placeholder location="classpath:application.properties"/>-->
 
 <!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 
