@@ -51,6 +51,4 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
-    <bean id="companyRepository" class="com.dmdev.spring.database.repository.CompanyRepository"/>
-
 </beans>
