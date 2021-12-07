@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    @Profile("prod|web")
+//    ! & |
     public UserRepository userRepository2(ConnectionPool pool2) {
         return new UserRepository(pool2);
     }
