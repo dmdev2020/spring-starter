@@ -7,7 +7,7 @@ db:
   properties:
     first: 123
     second: 567
-    third.value: Third
+    third: Third
   pool:
     size: 12
     timeout: 10
