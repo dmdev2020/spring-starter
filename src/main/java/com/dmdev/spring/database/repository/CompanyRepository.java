@@ -1,7 +1,9 @@
 package com.dmdev.spring.database.repository;
 
+import com.dmdev.spring.annotation.CustomRepository;
 import com.dmdev.spring.database.pool.ConnectionPool;
 
+@CustomRepository
 public class CompanyRepository {
 
     private final ConnectionPool connectionPool;
