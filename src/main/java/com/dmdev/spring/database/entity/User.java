@@ -3,7 +3,9 @@ package com.dmdev.spring.database.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@ToString(exclude = "userChats")
+@EqualsAndHashCode(of = "username")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
