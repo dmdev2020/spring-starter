@@ -24,9 +24,14 @@ class UserRepositoryTest {
 
     @Test
     void checkPageable() {
-        var pageable = PageRequest.of(1, 2, Sort.by("id"));
-        var result = userRepository.findAllBy(pageable);
-        assertThat(result).hasSize(2);
+        var pageable = PageRequest.of(0, 2, Sort.by("id"));
+        var slice = userRepository.findAllBy(pageable);
+        slice.forEach(user -> System.out.println(user.getId()));
+
+        while (slice.hasNext()) {
+            slice = userRepository.findAllBy(slice.nextPageable());
+            slice.forEach(user -> System.out.println(user.getId()));
+        }
     }
 
     @Test
