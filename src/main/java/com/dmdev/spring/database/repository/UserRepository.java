@@ -36,7 +36,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findTop3ByBirthDateBefore(LocalDate birthDate, Sort sort);
 
     // Collection, Stream
-//    Streamable, Slice, Page
+    // Streamable, Slice, Page
     @Query(value = "select u from User u",
            countQuery = "select count(distinct u.firstname) from User u")
     Page<User> findAllBy(Pageable pageable);
