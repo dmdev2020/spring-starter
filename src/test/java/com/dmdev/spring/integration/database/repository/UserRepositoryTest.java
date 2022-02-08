@@ -3,6 +3,7 @@ package com.dmdev.spring.integration.database.repository;
 import com.dmdev.spring.database.entity.Role;
 import com.dmdev.spring.database.entity.User;
 import com.dmdev.spring.database.repository.UserRepository;
+import com.dmdev.spring.dto.UserFilter;
 import com.dmdev.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UserRepositoryTest {
 
     private final UserRepository userRepository;
+
+    @Test
+    void checkCustomImplementation() {
+        UserFilter filter = new UserFilter(
+            null, "%ov%", LocalDate.now()
+        );
+        var users = userRepository.findAllByFilter(filter);
+        assertThat(users).hasSize(4);
+    }
 
     @Test
     void checkProjections() {
