@@ -23,6 +23,12 @@ class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
+    void checkProjections() {
+        var users = userRepository.findAllByCompanyId(1);
+        assertThat(users).hasSize(2);
+    }
+
+    @Test
     void checkPageable() {
         var pageable = PageRequest.of(0, 2, Sort.by("id"));
         var slice = userRepository.findAllBy(pageable);
