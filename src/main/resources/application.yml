@@ -25,6 +25,7 @@ logging:
   level:
     root: INFO
     com.dmdev.spring.database.pool: INFO
+    org.springframework.jdbc.core: TRACE
   file:
     name: dmdev.log
     path: /
