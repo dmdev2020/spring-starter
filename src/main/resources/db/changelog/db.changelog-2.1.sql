@@ -19,4 +19,4 @@ CREATE TABLE IF NOT EXISTS users_aud
     lastname VARCHAR(64),
     role VARCHAR(32),
     company_id INT
-    );
+);
