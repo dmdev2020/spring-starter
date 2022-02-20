@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.postgresql:postgresql'
     implementation 'org.springframework.data:spring-data-envers'
     implementation 'com.querydsl:querydsl-jpa'
+    implementation 'org.liquibase:liquibase-core'
 
     annotationProcessor 'com.querydsl:querydsl-apt'
 

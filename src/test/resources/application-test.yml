@@ -8,4 +8,4 @@ spring:
     password: test
   jpa:
     properties.hibernate:
-      hbm2ddl.auto: update
+      hbm2ddl.auto: validate
