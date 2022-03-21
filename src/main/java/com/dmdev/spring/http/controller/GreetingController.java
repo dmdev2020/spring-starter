@@ -29,7 +29,7 @@ public class GreetingController {
 //        request.getSession().setAttribute(); sessionScope
 //        request.setAttribute(); requestScope
 //        request.getSession().getAttribute("user")
-//        model.addAttribute("user", new UserReadDto(1L, "Ivan"));
+        model.addAttribute("user", userReadDto);
 
         return "greeting/hello";
     }

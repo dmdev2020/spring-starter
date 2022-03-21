@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+    Hello ${requestScope.userReadDto.username}!
+    <p>Hello <span th:text="${userReadDto.username}">Dummy text</span>!</p>
+    <p th:text="|Hello ${userReadDto.username}!|">Hello user</p>
+</body>
+</html>
