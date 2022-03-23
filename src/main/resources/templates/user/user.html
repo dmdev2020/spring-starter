@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+    <form th:action="@{/users/{userId}/update(userId=${user.id})}" method="post" th:object="${user}">
+        <label for="username">Username:
+            <input id="username" type="text" name="username" th:value="*{username}">
+        </label><br>
+        <label for="birthDate">BirthDate:
+            <input id="birthDate" type="date" name="birthDate" th:value="*{birthDate}">
+        </label><br>
+        <label for="lastname">Lastname:
+            <input id="lastname" type="text" name="lastname" th:value="*{lastname}">
+        </label><br>
+        <label for="firstname">Firstname:
+            <input id="firstname" type="text" name="firstname" th:value="*{firstname}">
+        </label><br>
+        <div th:each="role : ${roles}">
+            <input th:id="${role}" type="radio" name="role" th:value="${role}" th:checked="${role == user.role}">
+            <label th:for="${role}" th:text="${role}">Role name</label>
+        </div>
+        <div>
+            <label for="company">Company:
+                <select id="company" name="companyId">
+                    <option th:each="company : ${companies}"
+                            th:value="${company.id()}"
+                            th:selected="${company.id() == user.company.id()}"
+                            th:text="${company.name()}">Company</option>
+                </select>
+            </label>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+    <form th:action="@{/users/{userId}/delete(userId=${user.id})}" th:if="${user.role.name() == 'ADMIN'}" method="post">
+        <button type="submit">Remove</button>
+    </form>
+</body>
+</html>
