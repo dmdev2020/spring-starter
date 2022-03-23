@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/users")
@@ -42,9 +43,23 @@ public class UserController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/registration")
+    public String registration(Model model, @ModelAttribute("user") UserCreateEditDto user) {
+        model.addAttribute("user", user);
+        model.addAttribute("roles", Role.values());
+        model.addAttribute("companies", companyService.findAll());
+        return "user/registration";
+    }
+
     @PostMapping
 //    @ResponseStatus(HttpStatus.CREATED)
-    public String create(@ModelAttribute UserCreateEditDto user) {
+    public String create(@ModelAttribute UserCreateEditDto user, RedirectAttributes redirectAttributes) {
+//        if (true) {
+//            redirectAttributes.addAttribute("username", user.getUsername());
+//            redirectAttributes.addAttribute("firstname", user.getFirstname());
+//            redirectAttributes.addFlashAttribute("user", user);
+//            return "redirect:/users/registration";
+//        }
         return "redirect:/users/" + userService.create(user).getId();
     }
 
