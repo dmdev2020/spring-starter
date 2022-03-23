@@ -5,6 +5,18 @@
     <title>Users</title>
 </head>
 <body>
+    <form action="/users">
+        <label for="firstname">Firstname:
+            <input id="firstname" type="text" name="firstname">
+        </label>
+        <label for="lastname">Lastname:
+            <input id="lastname" type="text" name="lastname">
+        </label>
+        <label for="birthDate">Birthdate:
+            <input id="birthDate" type="date" name="birthDate">
+        </label>
+        <button type="submit">Filter</button>
+    </form>
     <div th:each="user : ${users}">
         <a th:href="@{'/users/' + ${user.id}}" th:text="|${user.id}. ${user.username}|">User</a>
     </div>
