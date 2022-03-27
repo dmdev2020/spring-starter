@@ -27,7 +27,6 @@ public class UserController {
 
     @GetMapping
     public String findAll(Model model, UserFilter filter) {
-//        model.addAttribute("users", userService.findAll(filter));
         model.addAttribute("users", userService.findAll(filter));
         return "user/users";
     }
