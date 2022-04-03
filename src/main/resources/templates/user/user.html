@@ -18,6 +18,9 @@
         <label for="firstname">Firstname:
             <input id="firstname" type="text" name="firstname" th:value="*{firstname}">
         </label><br>
+        <div th:if="${user.image}">
+            <img th:src="@{/api/v1/users/{userId}/avatar(userId=${user.id})}" alt="User image">
+        </div>
         <label for="image">Image:
             <input id="image" type="file" name="image">
         </label><br>
