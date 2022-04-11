@@ -6,6 +6,9 @@
 </head>
 <body>
 <form action="/login" method="post">
+    <div style="color: red" th:if="${param.error}">
+        Bad credentials
+    </div>
     <label for="username">Username:
         <input id="username" type="text" name="username">
     </label><br>
