@@ -13,6 +13,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
+//                .httpBasic(Customizer.withDefaults());
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/users")
