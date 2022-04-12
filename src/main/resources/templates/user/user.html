@@ -5,6 +5,7 @@
     <title>User</title>
 </head>
 <body>
+    <div th:insert="~{fragment :: header}"></div>
     <form th:action="@{/users/{userId}/update(userId=${user.id})}" enctype="multipart/form-data" method="post" th:object="${user}">
         <label for="username">Username:
             <input id="username" type="text" name="username" th:value="*{username}">
