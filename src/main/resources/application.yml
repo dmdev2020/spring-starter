@@ -58,3 +58,10 @@ spring:
             clientSecret: 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
             redirectUri: http://localhost:8080/login/oauth2/code/google
             scope: openid,email,profile
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: 683078134097-228jgon9bc7ud9qfqkm3gam1k5b75pf8.apps.googleusercontent.com
+      client-secret: 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
+      scopes: openid,email,profile
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html
