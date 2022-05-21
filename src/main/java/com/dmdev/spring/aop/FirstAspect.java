@@ -2,35 +2,21 @@ package com.dmdev.spring.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Aspect
 @Component
+@Order(1)
 public class FirstAspect {
-
-    /*
-        @within - check annotation on the class level
-     */
-    @Pointcut("@within(org.springframework.stereotype.Controller)")
-    public void isControllerLayer() {
-    }
-
-    /*
-        within - check class type name
-     */
-    @Pointcut("within(com.dmdev.spring.service.*Service)")
-    public void isServiceLayer() {
-    }
 
     /*
         this - check AOP proxy class type
@@ -44,7 +30,7 @@ public class FirstAspect {
     /*
         @annotation - check annotation on method level
      */
-    @Pointcut("isControllerLayer() && @annotation(org.springframework.web.bind.annotation.GetMapping)")
+    @Pointcut("com.dmdev.spring.aop.CommonPointcuts.isControllerLayer() && @annotation(org.springframework.web.bind.annotation.GetMapping)")
     public void hasGetMapping() {
     }
 
@@ -53,7 +39,7 @@ public class FirstAspect {
         * - any param type
         .. - 0+ any params type
      */
-    @Pointcut("isControllerLayer() && args(org.springframework.ui.Model,..)")
+    @Pointcut("com.dmdev.spring.aop.CommonPointcuts.isControllerLayer() && args(org.springframework.ui.Model,..)")
     public void hasModelParam() {
     }
 
@@ -62,7 +48,7 @@ public class FirstAspect {
         * - any param type
         .. - 0+ any params type
      */
-    @Pointcut("isControllerLayer() && @args(com.dmdev.spring.validation.UserInfo,..)")
+    @Pointcut("com.dmdev.spring.aop.CommonPointcuts.isControllerLayer() && @args(com.dmdev.spring.validation.UserInfo,..)")
     public void hasUserInfoParamAnnotation() {
     }
 
@@ -112,21 +98,6 @@ public class FirstAspect {
     @After("anyFindByIdServiceMethod() && target(service)")
     public void addLoggingAfterFinally(Object service) {
         log.info("after (finally) - invoked findById method in class {}", service);
-    }
-
-    @Around("anyFindByIdServiceMethod() && target(service) && args(id)")
-    public Object addLoggingAround(ProceedingJoinPoint joinPoint, Object service, Object id) throws Throwable {
-        log.info("AROUND before - invoked findById method in class {}, with id {}", service, id);
-        try {
-            Object result = joinPoint.proceed();
-            log.info("AROUND after returning - invoked findById method in class {}, result {}", service, result);
-            return result;
-        } catch (Throwable ex) {
-            log.info("AROUND after throwing - invoked findById method in class {}, exception {}: {}", service, ex.getClass(), ex.getMessage());
-            throw ex;
-        } finally {
-            log.info("AROUND after (finally) - invoked findById method in class {}", service);
-        }
     }
 
 
